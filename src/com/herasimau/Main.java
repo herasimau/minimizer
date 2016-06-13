@@ -24,21 +24,21 @@ public class Main {
     }
 
     public static String minimizeString(String str) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < str.length(); i++) {
-            int runLength = 1;
-            while (i+1 < str.length() && str.charAt(i) == str.charAt(i+1)) {
+        StringBuilder sb = new StringBuilder(); //используем StringBuilder чтобы работать с одним объектом
+        for (int i = 0; i < str.length(); i++) { // проходим по каждому символу циклом
+            int runLength = 1; // количесвто повторений
+            while (i+1 < str.length() && str.charAt(i) == str.charAt(i+1)) { //пока следующий символ равен текущему инриментируем runLength
                 runLength++;
                 i++;
             }
 
-            sb.append(str.charAt(i));
-            if(runLength>1){
+            sb.append(str.charAt(i)); // Добавляем символ в билдер
+            if(runLength>1){ // Если повторений больше одного добавляем число
                 sb.append("("+runLength+")");
             }
 
         }
-        return sb.toString();
+        return sb.toString(); // возращаем строку
     }
 
 
