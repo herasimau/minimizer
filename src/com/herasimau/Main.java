@@ -17,9 +17,7 @@ public class Main {
         list.add(minimizeString("Jaaaavvvva"));
         list.add(minimizeString("11111111111"));
 
-        for (String s:list) {
-            System.out.println(s);
-        }
+        list.forEach(System.out::println);
 
     }
 
