@@ -1,7 +1,5 @@
 package com.herasimau;
 
-import java.util.ArrayList;
-
 /**
  * @author herasimau on 12.06.2016.
  * Решение задачи http://vk.com/java_problems?w=wall-60560229_982
@@ -11,16 +9,22 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-        list.add(minimizeString("123"));
-        list.add(minimizeString("11"));
-        list.add(minimizeString("Jaaaavvvva"));
-        list.add(minimizeString("11111111111"));
-
-        list.forEach(System.out::println);
+        String data = generateRandomData(); //генерируем строку в миллион символов
+        long startTime = System.currentTimeMillis(); //замеряем время
+        data = minimizeString(data); // упаковываем строку
+        long endTime   = System.currentTimeMillis();
+        long totalTime = (endTime - startTime);
+        System.out.println(data);
+        System.out.println("Compress took "+totalTime+" milliseconds.");
 
     }
-
+    public static String generateRandomData(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 1000000; i++) {
+            sb.append(Math.random()*10000);
+        }
+        return sb.toString();
+    }
     public static String minimizeString(String str) {
         StringBuilder sb = new StringBuilder(); //используем StringBuilder чтобы работать с одним объектом
         for (int i = 0; i < str.length(); i++) { // проходим по каждому символу циклом
