@@ -23,22 +23,22 @@ public class Main {
 
     }
 
-    public static String minimizeString(String source) {
-        StringBuilder dest = new StringBuilder();
-        for (int i = 0; i < source.length(); i++) {
+    public static String minimizeString(String str) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
             int runLength = 1;
-            while (i+1 < source.length() && source.charAt(i) == source.charAt(i+1)) {
+            while (i+1 < str.length() && str.charAt(i) == str.charAt(i+1)) {
                 runLength++;
                 i++;
             }
 
-            dest.append(source.charAt(i));
+            sb.append(str.charAt(i));
             if(runLength>1){
-                dest.append("("+runLength+")");
+                sb.append("("+runLength+")");
             }
 
         }
-        return dest.toString();
+        return sb.toString();
     }
 
 
