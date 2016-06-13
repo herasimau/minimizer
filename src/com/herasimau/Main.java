@@ -23,51 +23,22 @@ public class Main {
 
     }
 
-    public static String minimizeString(String str) {
-        StringBuilder sb = new StringBuilder();
-        char[] chArr = str.toCharArray();
-        if(chArr.length==1){
-            return str;
-        }
-        for (int i = 0; i < chArr.length; i++) {
-            int count = 1;
-            if (i == chArr.length - 1) {
-                if (chArr[i] != chArr[i - 1]) {
-                    sb.append(chArr[i]);
-                }
+    public static String minimizeString(String source) {
+        StringBuilder dest = new StringBuilder();
+        for (int i = 0; i < source.length(); i++) {
+            int runLength = 1;
+            while (i+1 < source.length() && source.charAt(i) == source.charAt(i+1)) {
+                runLength++;
+                i++;
             }
-            if (i + 1 < chArr.length) {
-                if (chArr[i] == chArr[i + 1]) {
-                    int j = 1;
 
-                    while (j + i < chArr.length) {
-                        if (i + j < chArr.length) {
-                            if (chArr[i] == chArr[i + j]) {
-                                count++;
-                                j++;
-                            } else {
-
-                                break;
-                            }
-                        } else {
-
-                            break;
-                        }
-                    }
-                    i += count - 1;
-                }
-
-                if (count > 1) {
-                    sb.append(chArr[i] + "(" + count + ")");
-
-                } else {
-                    sb.append(chArr[i]);
-                }
-
+            dest.append(source.charAt(i));
+            if(runLength>1){
+                dest.append("("+runLength+")");
             }
 
         }
-        return sb.toString();
+        return dest.toString();
     }
 
 
